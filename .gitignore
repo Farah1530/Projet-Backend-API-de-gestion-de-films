@@ -1,0 +1,9 @@
+node_modules/
+.env
+~$*
+*.log
+
+# Documents locaux
+Projet Backend.pdf
+*.docx
+Cahier de charge Farah.pdf
