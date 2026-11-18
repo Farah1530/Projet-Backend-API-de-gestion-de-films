@@ -18,5 +18,5 @@ Projet Backend – CPNV, classe SI-CA2a – 2026-2027
 |---|---|---|
 | Cahier des charges | 1 | Rendu |
 | MCD (`MCD_API_Films.pdf`) + lien GitHub | 2 | Rendu |
-| MLD | 3 | En cours |
+| MLD (`docs/MLD_API_Films.pdf` + schéma `docs/MLD_Workbench.pdf`) | 3 | Rendu |
 | Version 1.0 (release GitHub, testable avec Postman) | 8 | À faire |
