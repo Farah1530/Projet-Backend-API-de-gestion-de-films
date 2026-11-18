@@ -12,11 +12,11 @@ Période : du 4 novembre 2026 au 13 janvier 2027 (≈ 27 h prévues)
 | Sprint | Période | Temps prévu | Temps réel |
 |---|---|---|---|
 | Analyse | 4 – 11 nov. | 4 h | 7 h 10 |
-| Sprint 1 | 11 – 24 nov. | 7 h | 5 h 10 (en cours) |
+| Sprint 1 | 11 – 24 nov. | 7 h | 7 h 10 |
 | Sprint 2 | 25 nov. – 8 déc. | 5 h | … |
 | Sprint 3 | 9 – 22 déc. | 7 h | … |
 | Sprint 4 | 23 déc. – 13 janv. | 4 h | … |
-| **Total** | | **27 h** | **12 h 20** (en cours) |
+| **Total** | | **27 h** | **14 h 20** (en cours) |
 
 ---
 
@@ -63,16 +63,22 @@ Période : du 4 novembre 2026 au 13 janvier 2027 (≈ 27 h prévues)
 | MLD mis en PDF : détail des colonnes + schéma généré avec MySQL Workbench (Reverse Engineer) | 30 min | Livrable semaine 3 |
 | CRUD des genres : model, controller, routes (`/api/genres`) | 1 h 45 | S2 / S3 |
 | Tests des routes des genres dans Postman (201, 200, 400, 404, 409) | 30 min | S2 / S3 |
+| CRUD des réalisateurs : model, controller, routes (`/api/realisateurs`), refus de suppression si le réalisateur a des films (409) | 1 h 30 | S4 / S5 |
+| Tests des routes des réalisateurs dans Postman (201, 200, 400, 404, 409) | 30 min | S4 / S5 |
 
 **Problèmes rencontrés :**
 - Un POST envoyé sans body dans Postman renvoyait une erreur 500.
+- Les dates de naissance revenaient décalées d'un jour (`1970-07-29T23:00:00.000Z` au lieu de `1970-07-30`).
+- En ajoutant un film à la main dans HeidiSQL, erreur SQL 1452 (« foreign key constraint fails »).
 
 **Solutions :**
 - Avec Express 5, `req.body` est vide quand aucun body n'est envoyé : ajout de `req.body || {}` pour renvoyer une erreur 400 claire à la place.
 - Dans Postman, toujours choisir Body → raw → JSON.
+- Ajout de `dateStrings: ['DATE']` dans la connexion MySQL pour recevoir les dates en texte, sans fuseau horaire.
+- Le réalisateur avec l'id 1 n'existait plus (MySQL ne réutilise pas les id supprimés) : vérifier l'id avec `SELECT * FROM realisateur;` puis utiliser le bon `id_realisateur`.
 
-**Livré / terminé :** MLD (PDF) sur Teams, stories S1, S2 et S3.
-**Prochaine étape :** CRUD des réalisateurs (S4 / S5) avant la fin du sprint 1 (24 novembre).
+**Livré / terminé :** MLD (PDF) sur Teams, stories S1 à S5 (sprint 1 terminé).
+**Prochaine étape :** sprint 2, CRUD des films (S6 / S7) avec leurs genres.
 
 **Utilisation de l'IA :** je me suis aidée de l'IA pour déboguer le code qui ne marchait pas et pour comprendre où j'avais fait des fautes.
 
