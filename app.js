@@ -36,7 +36,11 @@ app.get('/', (req, res) => {
     res.json({ message: 'API Films opérationnelle' });
 });
 
-// --- Les routes des entités (films, genres...) seront ajoutées ici ---
+// Routes des genres : toutes les URL qui commencent par /api/genres
+// sont gérées dans src/routes/genreRoutes.js
+app.use('/api/genres', require('./src/routes/genreRoutes'));
+
+// --- Les routes des autres entités (films, réalisateurs...) seront ajoutées ici ---
 
 // Route inconnue : si aucune route au-dessus ne correspond,
 // Express arrive ici. On renvoie une erreur 404 en JSON
