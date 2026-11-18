@@ -21,7 +21,9 @@ const pool = mysql.createPool({
     password: process.env.DB_PASSWORD, // mot de passe MySQL (dans .env, pas sur GitHub)
     database: process.env.DB_NAME,     // nom de la base : api_films
     waitForConnections: true,          // si toutes les connexions sont prises, on attend
-    connectionLimit: 10                // 10 connexions maximum en même temps
+    connectionLimit: 10,               // 10 connexions maximum en même temps
+    dateStrings: ['DATE']              // renvoie les dates comme du texte "1970-07-30"
+                                       // (sinon le fuseau horaire peut décaler d'un jour)
 });
 
 /**
